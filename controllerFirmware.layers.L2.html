@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>controllerFirmware.layers.L2 package &#8212; Firmware 3.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Firmware 3.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="controllerfirmware-layers-l2-package">
+<h1>controllerFirmware.layers.L2 package<a class="headerlink" href="#controllerfirmware-layers-l2-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2.custom_formatter">
+<span id="controllerfirmware-layers-l2-custom-formatter-module"></span><h2>controllerFirmware.layers.L2.custom_formatter module<a class="headerlink" href="#module-controllerFirmware.layers.L2.custom_formatter" title="Permalink to this headline">¶</a></h2>
+<p>This module is responsible for formatting data and command values.
+Data gets converted from raw value(hardware) to formatted value(acceptable
+in DeJoule). Command gets converted from formatted value to raw value. It
+uses unit module to convert raw units to DAU ( DeJoule Acceptable Units )
+and vice-versa.</p>
+<dl class="class">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter">
+<em class="property">class </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.custom_formatter.</code><code class="sig-name descname">Formatter</code><span class="sig-paren">(</span><em class="sig-param">formatConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#controllerFirmware.layers.L2.unit_handler.Unit" title="controllerFirmware.layers.L2.unit_handler.Unit"><code class="xref py py-class docutils literal notranslate"><span class="pre">controllerFirmware.layers.L2.unit_handler.Unit</span></code></a></p>
+<p>The main class responsible for formatting data and commands.</p>
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.rawOffset">
+<code class="sig-name descname">rawOffset</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.rawOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>offset to be added to convert into a DeJoule
+acceptable value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.mulFactor">
+<code class="sig-name descname">mulFactor</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.mulFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>a factor to be multiplied to convert into a
+DeJoule acceptable value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.minimum">
+<code class="sig-name descname">minimum</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.minimum" title="Permalink to this definition">¶</a></dt>
+<dd><p>final data or command received value has to be greater
+than this value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.maximum">
+<code class="sig-name descname">maximum</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.maximum" title="Permalink to this definition">¶</a></dt>
+<dd><p>final data or command received value has to be less than
+this value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.registerFormattingEnabled">
+<code class="sig-name descname">registerFormattingEnabled</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.registerFormattingEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>holds True if it is a modbus data
+parameter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.registerFormattingDriverType">
+<code class="sig-name descname">registerFormattingDriverType</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.registerFormattingDriverType" title="Permalink to this definition">¶</a></dt>
+<dd><p>driver for modbus formatting.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.arrayIndexForRegister">
+<code class="sig-name descname">arrayIndexForRegister</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.arrayIndexForRegister" title="Permalink to this definition">¶</a></dt>
+<dd><p>required for modbus formatting.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.extraOffset">
+<code class="sig-name descname">extraOffset</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.extraOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>offset added by a user for configuration page,
+can be different for different deviceId’s.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.check_if_not_null">
+<code class="sig-name descname">check_if_not_null</code><span class="sig-paren">(</span><em class="sig-param">*values</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.check_if_not_null" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.check_range_raise_error">
+<code class="sig-name descname">check_range_raise_error</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.check_range_raise_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the value is within min and max</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#controllerFirmware.layers.L2.custom_formatter.ValueOutOfRange" title="controllerFirmware.layers.L2.custom_formatter.ValueOutOfRange"><strong>ValueOutOfRange</strong></a> – depicts that the value is out of range of min
+    and max</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.format_value">
+<code class="sig-name descname">format_value</code><span class="sig-paren">(</span><em class="sig-param">rawValueDict</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.format_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formats data raw values into DeJoule Acceptable values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rawValueDict</strong> (<em>dict</em>) – dictionary contianing raw value
+For e.g. {“data” : 24.33}</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>formatted value if no error, error name and error value if
+there is some error while conversion.for e.g. return values
+for different possible situations can be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span> <span class="p">:</span> <span class="mf">23.33</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span> <span class="p">:</span> <span class="s2">&quot;null&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorName&quot;</span> <span class="p">:</span> <span class="s2">&quot;UnitConversionError&quot;</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span> <span class="p">:</span> <span class="s2">&quot;null&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorName&quot;</span> <span class="p">:</span> <span class="s2">&quot;ValueOutOfRange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorValue&quot;</span> <span class="p">:</span> <span class="mi">101</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.register_driver_formatting">
+<code class="sig-name descname">register_driver_formatting</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.register_driver_formatting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls a modbus register function based on driver number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – raw value read by modbus protocol</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>formatted value as returned from modbus formatting
+driver functions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.custom_formatter.Formatter.unformat_value">
+<code class="sig-name descname">unformat_value</code><span class="sig-paren">(</span><em class="sig-param">formattedValue</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.Formatter.unformat_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>UnFormats command value from DeJoule into raw value ready to be
+passed into layer 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>formattedValue</strong> (<em>int/float</em>) – command value received from
+jouletrack/pid/recipe to be converted into raw value.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>rawValue if no error, error name and error value if
+there is some error while conversion, status of conversion is
+True if no error, else it is False when there is any
+conversion error.</p>
+<p>for e.g. return values for different possible situations can
+be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;rawValue&quot;</span> <span class="p">:</span> <span class="mf">23.33</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span> <span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;status&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;errorName&quot;</span> <span class="p">:</span> <span class="s2">&quot;UnitConversionError&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorValue&quot;</span> <span class="p">:</span> <span class="mf">34.22</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;status&quot;</span> <span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorName&quot;</span> <span class="p">:</span> <span class="s2">&quot;ValueOutOfRange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;errorValue&quot;</span> <span class="p">:</span> <span class="mi">101</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="controllerFirmware.layers.L2.custom_formatter.ModbusFormattingDriverNotFound">
+<em class="property">exception </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.custom_formatter.</code><code class="sig-name descname">ModbusFormattingDriverNotFound</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.ModbusFormattingDriverNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This is raised when a particular modbus formatting driver is not found
+in the modbusFormattingDrivers file.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="controllerFirmware.layers.L2.custom_formatter.ValueOutOfRange">
+<em class="property">exception </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.custom_formatter.</code><code class="sig-name descname">ValueOutOfRange</code><a class="headerlink" href="#controllerFirmware.layers.L2.custom_formatter.ValueOutOfRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This is raised when data or command value does not fall within min and
+max. Min and max are defined in parameter properties in backend
+configuration</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2.modbusFormattingDrivers">
+<span id="controllerfirmware-layers-l2-modbusformattingdrivers-module"></span><h2>controllerFirmware.layers.L2.modbusFormattingDrivers module<a class="headerlink" href="#module-controllerFirmware.layers.L2.modbusFormattingDrivers" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.RegisterFormattingError">
+<em class="property">exception </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">RegisterFormattingError</code><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.RegisterFormattingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.catch_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">catch_error</code><span class="sig-paren">(</span><em class="sig-param">func</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.catch_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.driver0">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">driver0</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.driver0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.driver1">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">driver1</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.driver1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.driver2">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">driver2</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.driver2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.driver3">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">driver3</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.driver3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.modbusFormattingDrivers.driver4">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.modbusFormattingDrivers.</code><code class="sig-name descname">driver4</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.modbusFormattingDrivers.driver4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2.test_custom_formatter">
+<span id="controllerfirmware-layers-l2-test-custom-formatter-module"></span><h2>controllerFirmware.layers.L2.test_custom_formatter module<a class="headerlink" href="#module-controllerFirmware.layers.L2.test_custom_formatter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.formatter_object">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">formatter_object</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.formatter_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_check_if_null_is_absent">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_check_if_null_is_absent</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_check_if_null_is_absent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_check_if_null_is_present">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_check_if_null_is_present</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_check_if_null_is_present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_check_range_no_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_check_range_no_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">minimum</em>, <em class="sig-param">maximum</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_check_range_no_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_check_range_raise_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_check_range_raise_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">minimum</em>, <em class="sig-param">maximum</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_check_range_raise_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_no_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_no_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_no_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_out_of_range">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_out_of_range</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_out_of_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_register_driver_formatting_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_register_driver_formatting_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_register_driver_formatting_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_register_driver_not_found">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_register_driver_not_found</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_register_driver_not_found" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_unit_convert_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_unit_convert_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_unit_convert_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_format_value_unit_name_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_format_value_unit_name_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">rawValueDict</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_format_value_unit_name_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_driver_found">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_register_formatting_driver_found</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">registerFormattingEnabled</em>, <em class="sig-param">driverType</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_driver_found" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_driver_not_found">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_register_formatting_driver_not_found</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">registerFormattingEnabled</em>, <em class="sig-param">driverType</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_driver_not_found" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_same_value">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_register_formatting_same_value</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">registerFormattingEnabled</em>, <em class="sig-param">driverType</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_register_formatting_same_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_no_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_unformat_value_no_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_no_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_out_of_range">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_unformat_value_out_of_range</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_out_of_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_unit_convert_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_unformat_value_unit_convert_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_unit_convert_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_unit_name_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_custom_formatter.</code><code class="sig-name descname">test_unformat_value_unit_name_error</code><span class="sig-paren">(</span><em class="sig-param">formatter_object</em>, <em class="sig-param">value</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_custom_formatter.test_unformat_value_unit_name_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2.test_unit_handler">
+<span id="controllerfirmware-layers-l2-test-unit-handler-module"></span><h2>controllerFirmware.layers.L2.test_unit_handler module<a class="headerlink" href="#module-controllerFirmware.layers.L2.test_unit_handler" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_invert">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_C_to_F_invert</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_invert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_invert_int">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_C_to_F_invert_int</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_invert_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_simple">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_C_to_F_simple</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_simple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_simple_int">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_C_to_F_simple_int</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_C_to_F_simple_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_invert">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_F_to_C_invert</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_invert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_invert_int">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_F_to_C_invert_int</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_invert_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_simple">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_F_to_C_simple</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_simple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_simple_int">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_F_to_C_simple_int</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_F_to_C_simple_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_raise_unit_conversion_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_raise_unit_conversion_error</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_raise_unit_conversion_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_raise_unit_name_error">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_raise_unit_name_error</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_raise_unit_name_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_return_same_value">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_return_same_value</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_return_same_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="controllerFirmware.layers.L2.test_unit_handler.test_convert_return_same_value_int">
+<code class="sig-prename descclassname">controllerFirmware.layers.L2.test_unit_handler.</code><code class="sig-name descname">test_convert_return_same_value_int</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em>, <em class="sig-param">value</em>, <em class="sig-param">invertConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.test_unit_handler.test_convert_return_same_value_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2.unit_handler">
+<span id="controllerfirmware-layers-l2-unit-handler-module"></span><h2>controllerFirmware.layers.L2.unit_handler module<a class="headerlink" href="#module-controllerFirmware.layers.L2.unit_handler" title="Permalink to this headline">¶</a></h2>
+<p>This modules handles unit conversion and operates type conversion by
+calling int/float. This conversion depends on different parameters
+configuration.</p>
+<dl class="class">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit">
+<em class="property">class </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.unit_handler.</code><code class="sig-name descname">Unit</code><span class="sig-paren">(</span><em class="sig-param">paramGroup</em>, <em class="sig-param">unit</em>, <em class="sig-param">dau</em>, <em class="sig-param">operation</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class handles unit conversion and special operation like int/float
+based on different parameters</p>
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.paramGroup">
+<code class="sig-name descname">paramGroup</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.paramGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter group to which a parameter belongs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.unit">
+<code class="sig-name descname">unit</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>raw unit which is compatible with the equipment/hardware</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.dau">
+<code class="sig-name descname">dau</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.dau" title="Permalink to this definition">¶</a></dt>
+<dd><p>unit which is compatible with DeJoule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.specialOperation">
+<code class="sig-name descname">specialOperation</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.specialOperation" title="Permalink to this definition">¶</a></dt>
+<dd><p>function object for int or float based on different
+param’s use cases</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.UREG">
+<code class="sig-name descname">UREG</code><em class="property"> = &lt;pint.registry.UnitRegistry object&gt;</em><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.UREG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pint’s object which is a store of all units.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.convert">
+<code class="sig-name descname">convert</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">invertConversion=False</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main unit converter method which converts units as well
+as operates int/float on the converted values if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>int/float</em>) – the value which is to be converted.</p></li>
+<li><p><strong>invertConversion</strong> (<em>bool</em>) – if False conversion is from raw unit to
+dau,if True conversion is from dau to raw unit</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>converted and special operated value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float/int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#controllerFirmware.layers.L2.unit_handler.UnitConversionError" title="controllerFirmware.layers.L2.unit_handler.UnitConversionError"><strong>UnitConversionError</strong></a> – Error while converting units.</p></li>
+<li><p><a class="reference internal" href="#controllerFirmware.layers.L2.unit_handler.UnitNameError" title="controllerFirmware.layers.L2.unit_handler.UnitNameError"><strong>UnitNameError</strong></a> – Error when unit is not present in ureg units store.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="controllerFirmware.layers.L2.unit_handler.Unit.special_operate">
+<code class="sig-name descname">special_operate</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.Unit.special_operate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="controllerFirmware.layers.L2.unit_handler.UnitConversionError">
+<em class="property">exception </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.unit_handler.</code><code class="sig-name descname">UnitConversionError</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.UnitConversionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This is raised when the units are non-convertible.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="controllerFirmware.layers.L2.unit_handler.UnitNameError">
+<em class="property">exception </em><code class="sig-prename descclassname">controllerFirmware.layers.L2.unit_handler.</code><code class="sig-name descname">UnitNameError</code><a class="headerlink" href="#controllerFirmware.layers.L2.unit_handler.UnitNameError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>This is raised when the unit name is not present in pint ureg store or
+we can say, it is not a valid unit’s name.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-controllerFirmware.layers.L2">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-controllerFirmware.layers.L2" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">controllerFirmware.layers.L2 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2.custom_formatter">controllerFirmware.layers.L2.custom_formatter module</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2.modbusFormattingDrivers">controllerFirmware.layers.L2.modbusFormattingDrivers module</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2.test_custom_formatter">controllerFirmware.layers.L2.test_custom_formatter module</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2.test_unit_handler">controllerFirmware.layers.L2.test_unit_handler module</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2.unit_handler">controllerFirmware.layers.L2.unit_handler module</a></li>
+<li><a class="reference internal" href="#module-controllerFirmware.layers.L2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/controllerFirmware.layers.L2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Firmware 3.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Dishant, Akshit.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

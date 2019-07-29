@@ -1,0 +1,38 @@
+controllerFirmware package
+==========================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   controllerFirmware.customLibraries
+   controllerFirmware.layers
+
+Submodules
+----------
+
+controllerFirmware.conf module
+------------------------------
+
+.. automodule:: controllerFirmware.conf
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+controllerFirmware.firmwareMain module
+--------------------------------------
+
+.. automodule:: controllerFirmware.firmwareMain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: controllerFirmware
+   :members:
+   :undoc-members:
+   :show-inheritance:
