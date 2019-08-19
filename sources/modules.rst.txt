@@ -1,7 +1,0 @@
-controllerFirmware
-==================
-
-.. toctree::
-   :maxdepth: 4
-
-   controllerFirmware
